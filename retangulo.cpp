@@ -199,7 +199,6 @@ vector<Retangulo> Retangulo::obterSubArvore() {
             aux = filhos_[i].obterSubArvore();
             resultado.insert(resultado.end(), aux.begin(), aux.end());
         }
-
         return resultado;
     }
 
