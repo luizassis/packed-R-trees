@@ -4,30 +4,31 @@
 // incluir dependencias
 #include "retangulo.hpp"
 #include "entrada.hpp"
+#include <vector>
 
 class ArvoreR
 {
     public:
 
-        Retangulo raiz_;
+        Retangulo* raiz_;
 
-        size_t maxNos_;
+        std::size_t maxNos_;
 
-        ArvoreR(int maxNos);
+        ArvoreR(std::size_t maxNos);
         
         ~ArvoreR();
 
-        vector<Retangulo> busca(Entrada buscaFronteira);
+        std::vector<Retangulo> busca(Entrada buscaFronteira);
 
         void inserir(Entrada pontoDado);
 
-        vector<Entrada> inserirLote(vector<Entrada> entLista);
+        std::vector<Retangulo> inserirLote(std::vector<Entrada> entLista);
 
     private:
 
-        vector<Retangulo> buscaRecursiva(Retangulo retBusca, Retangulo no);
+        std::vector<Retangulo> buscaRecursiva(Retangulo retBusca, Retangulo* no);
 
-        vector<Retangulo> camadaRecursivaArvore(vector<Retangulo> retLista, int nivel);
+        std::vector<Retangulo> camadaRecursivaArvore(std::vector<Retangulo> retLista, int nivel);
 
         void caminhoArvoreBalanceado(Retangulo folha);
 
