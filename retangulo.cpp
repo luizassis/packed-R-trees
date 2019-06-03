@@ -165,15 +165,13 @@ bool Retangulo::noFolha() {
 
 bool Retangulo::temNoFolha() {
 		
-    return noFolha() || filhos_[0].noFolha(); //fix
+    return noFolha() || filhos_[0].noFolha();
 	
 }
 
 Retangulo* Retangulo::inserirFilho(Retangulo ret) {
 	
     filhos_.push_back(ret);
-	//filhos_[filhos_.size()-1].pai_ = this;//new Retangulo(this->obterX(), this->obterY(), this->obterLargura(), this->obterAltura(), this->obterDado());
-    //cout << "pai: " << filhos_[filhos_.size()-1].pai_ << endl; 
 	aumentaRetangulo(ret);
     return this;
 
@@ -191,16 +189,17 @@ void Retangulo::removerFilho(Retangulo ret) {
 vector<Retangulo> Retangulo::obterSubArvore() {
     
     vector<Retangulo> resultado;
-
-    if (filhos_.size() == 0) {
-        resultado[0] = Retangulo(x_, y_, largura_, altura_, dado_); 
+    
+    if (filhos_.size() == 0) {        
+        resultado.push_back(Retangulo(x_, y_, largura_, altura_, dado_));       
 	    return resultado;
 	} else {
         vector<Retangulo> aux;
         for (int unsigned i = 0; i < filhos_.size(); i++) {
-           aux = filhos_[i].obterSubArvore();
-           resultado.insert(resultado.end(), aux.begin(), aux.end());
+            aux = filhos_[i].obterSubArvore();
+            resultado.insert(resultado.end(), aux.begin(), aux.end());
         }
+
         return resultado;
     }
 
