@@ -1,7 +1,7 @@
 #include <iostream>
 #include <ctime>
 
-/*#include "arvorer.hpp"*/
+#include "arvorer.hpp"
 #include "retangulo.hpp"
 #include "entrada.hpp"
 
@@ -25,7 +25,7 @@ int main() {
     cout << "Entrada B - tempo: " << elapsedSecsEnB << " segundos!" << endl;
 
     clock_t beginEnC = clock();
-    Entrada enC = Entrada(5, 3, 3, 2, 6);
+    Entrada enC = Entrada(5, 3, 3, 3, 6);
     clock_t endEnC = clock();
     double elapsedSecsEnC = double(endEnC - beginEnC) / CLOCKS_PER_SEC;
     cout << "Entrada C - tempo: " << elapsedSecsEnC << " segundos!" << endl;
@@ -81,7 +81,7 @@ int main() {
     bool retCSobrepoeD = retC.sobrepoe(retD);
     clock_t endCSobrepoeD = clock();
     double elapsedSecsCSobrepoeD = double(endCSobrepoeD - beginCSobrepoeD) / CLOCKS_PER_SEC;
-    cout << "Contem - tempo: " << elapsedSecsCSobrepoeD << " segundos!" << endl;
+    cout << "Sobrepoe - tempo: " << elapsedSecsCSobrepoeD << " segundos!" << endl;
 
     if (retCSobrepoeD)
         cout << "Retangulo C sobrepoe Retangulo D" << endl;
@@ -106,33 +106,126 @@ int main() {
     bool retESobrepoeD = retE.sobrepoe(retD);
     clock_t endESobrepoeD = clock();
     double elapsedSecsESobrepoeD = double(endESobrepoeD - beginESobrepoeD) / CLOCKS_PER_SEC;
-    cout << "Contem - tempo: " << elapsedSecsESobrepoeD << " segundos!" << endl;
-
+    cout << "Sobrepoe - tempo: " << elapsedSecsESobrepoeD << " segundos!" << endl;
     if (retESobrepoeD)
         cout << "Retangulo E sobrepoe Retangulo D" << endl;
     else
         cout << "Retangulo E nao sobrepoe Retangulo D" << endl;
 
     // Testando operadores de comparacao definidos
-    if (retA == retB)
+    clock_t beginAIgualB = clock();
+    bool retAIgualB = retA == retB;
+    clock_t endAIgualB = clock();
+    double elapsedSecsAIgualB = double(endAIgualB - beginAIgualB) / CLOCKS_PER_SEC;
+    cout << "Igual - tempo: " << elapsedSecsAIgualB << " segundos!" << endl;
+
+    if (retAIgualB)
         cout << "Retangulo A e igual a Retangulo B" << endl;
     else
         cout << "Retangulo A nao e igual a Retangulo B" << endl;
 
-    if (retA != retB)
+    clock_t beginADiferenteB = clock();
+    bool retADiferenteB = retA != retB;
+    clock_t endADiferenteB = clock();
+    double elapsedSecsADiferenteB = double(endADiferenteB - beginADiferenteB) / CLOCKS_PER_SEC;
+    cout << "Igual - tempo: " << elapsedSecsADiferenteB << " segundos!" << endl;
+    if (retADiferenteB)
         cout << "Retangulo A e igual a Retangulo A" << endl;
     else
         cout << "Retangulo A nao e igual a Retangulo A" << endl;
 
-    if (retA == retA)
+    clock_t beginAIgualA = clock();
+    bool retAIgualA = retA == retA;
+    clock_t endAIgualA = clock();
+    double elapsedSecsAIgualA = double(endAIgualA - beginAIgualA) / CLOCKS_PER_SEC;
+    cout << "Igual - tempo: " << elapsedSecsAIgualA << " segundos!" << endl;
+    if (retAIgualA)
         cout << "Retangulo A e igual a Retangulo A" << endl;
     else
         cout << "Retangulo A nao e igual a Retangulo A" << endl;
 
-    if (retA != retA)
+    clock_t beginADiferenteA = clock();
+    bool retADiferenteA = retA != retA;
+    clock_t endADiferenteA = clock();
+    double elapsedSecsADiferenteA = double(endADiferenteA - beginADiferenteA) / CLOCKS_PER_SEC;
+    cout << "Igual - tempo: " << elapsedSecsADiferenteA << " segundos!" << endl;
+    if (retADiferenteA)
         cout << "Retangulo A e igual a Retangulo A" << endl;
     else
         cout << "Retangulo A nao e igual a Retangulo A" << endl;
 
+    // Testando operacoes de insercao de filhos e operações com o pai
+    clock_t beginEInserirFilhoA = clock();
+    retA.pai_ = retE.inserirFilho(retA);
+    clock_t endEInserirFilhoA = clock();
+    double elapsedSecsEInserirFilhoA = double(endEInserirFilhoA - beginEInserirFilhoA) / CLOCKS_PER_SEC;
+    cout << "Inserir Filho - tempo: " << elapsedSecsEInserirFilhoA << " segundos!" << endl;
+    
+    clock_t beginEInserirFilhoB = clock();
+    retB.pai_ = retE.inserirFilho(retB);
+    clock_t endEInserirFilhoB = clock();
+    double elapsedSecsEInserirFilhoB = double(endEInserirFilhoB - beginEInserirFilhoB) / CLOCKS_PER_SEC;
+    cout << "Inserir Filho - tempo: " << elapsedSecsEInserirFilhoB << " segundos!" << endl;
+
+    clock_t beginEInserirFilhoC = clock();
+    retC.pai_ = retE.inserirFilho(retC);
+    clock_t endEInserirFilhoC = clock();
+    double elapsedSecsEInserirFilhoC = double(endEInserirFilhoC - beginEInserirFilhoC) / CLOCKS_PER_SEC;
+    cout << "Inserir Filho - tempo: " << elapsedSecsEInserirFilhoC << " segundos!" << endl;
+    
+    clock_t beginEInserirFilhoD = clock();
+    retD.pai_ = retE.inserirFilho(retD);
+    clock_t endEInserirFilhoD = clock();
+    double elapsedSecsEInserirFilhoD = double(endEInserirFilhoD - beginEInserirFilhoD) / CLOCKS_PER_SEC;
+    cout << "Inserir Filho - tempo: " << elapsedSecsEInserirFilhoD << " segundos!" << endl;
+
+    cout << "Inserir Filho - tempo medio: " << (elapsedSecsEInserirFilhoA+elapsedSecsEInserirFilhoB+elapsedSecsEInserirFilhoC+elapsedSecsEInserirFilhoD)/4 << " segundos!" << endl;
+
+    cout << "numeroFilhos(): "  << retA.numeroFilhos() << endl;
+    cout << "noFolha(): "  << retA.noFolha() << endl;
+    cout << "temNoFolha(): "  << retA.temNoFolha() << endl;
+    
+    cout << "numeroFilhos(): "  << retE.numeroFilhos() << endl;
+    cout << "noFolha(): "  << retE.noFolha() << endl;
+    cout << "temNoFolha(): "  << retE.temNoFolha() << endl;
+
+    Retangulo* ptr = retA.pai_;
+    cout << "xPai(): "  << ptr->obterX() << endl;
+    cout << "yPai(): "  << ptr->obterY() << endl;
+    cout << "larguraPai(): "  << ptr->obterLargura() << endl;
+    cout << "alturaPai(): "  << ptr->obterAltura() << endl;
+    cout << "dadoPai(): "  << ptr->obterDado() << endl;
+
+    // Testando operacoes de remocao de filhos e operações com o pai
+    retE.removerFilho(retA);
+    cout << "numeroFilhos(): "  << retE.numeroFilhos() << endl;
+    cout << "noFolha(): "  << retE.noFolha() << endl;
+    cout << "temNoFolha(): "  << retE.temNoFolha() << endl;
+
+    // Obter sub arvore a partir de um no    
+
+    /*Entrada enF = Entrada(6, 4, 1, 1, 1); // Criar nova entrada
+    Retangulo retF = Retangulo(enF.obterX(), enF.obterY(), enF.obterLargura(), enF.obterAltura(), enF.obterDado());
+    retF.pai_ = retC.inserirFilho(retF);
+    cout << retC.filhos_.size() << endl;*/
+
+    vector<Retangulo> subarvore = retE.obterSubArvore();
+    for (int unsigned i = 0; i < subarvore.size(); i++)
+        cout << subarvore[i].obterDado() << endl;
+
+    // Gerar Arvore R
+    size_t max = 2;
+    ArvoreR arvoreR = ArvoreR(max);
+
+    // inserir elementos na árvore
+    arvoreR.inserir(enA);
+    arvoreR.inserir(enB);
+    arvoreR.inserir(enC);
+    arvoreR.inserir(enD);
+    arvoreR.inserir(enE);
+    
+    cout << "dado raiz: " << arvoreR.raiz_->obterDado() << endl;
+    cout << "quantidade filhos: " << arvoreR.raiz_->filhos_.size() << endl;
+    
     return 0;
 }
