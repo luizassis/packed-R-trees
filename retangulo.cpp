@@ -165,15 +165,17 @@ bool Retangulo::noFolha() {
 
 bool Retangulo::temNoFolha() {
 		
-    return noFolha() || filhos_[0].noFolha();
+    return noFolha() || filhos_[0].noFolha(); //fix
 	
 }
 
-void Retangulo::inserirFilho(Retangulo ret) {
+Retangulo* Retangulo::inserirFilho(Retangulo ret) {
 	
-    ret.pai_ = this;
-	filhos_.push_back(ret);
+    filhos_.push_back(ret);
+	//filhos_[filhos_.size()-1].pai_ = this;//new Retangulo(this->obterX(), this->obterY(), this->obterLargura(), this->obterAltura(), this->obterDado());
+    //cout << "pai: " << filhos_[filhos_.size()-1].pai_ << endl; 
 	aumentaRetangulo(ret);
+    return this;
 
 }
 

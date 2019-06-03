@@ -51,7 +51,7 @@ class Retangulo
 
         bool temNoFolha();
 
-        void inserirFilho(Retangulo ret);
+        Retangulo* inserirFilho(Retangulo ret);
 
         void removerFilho(Retangulo ret);
 
